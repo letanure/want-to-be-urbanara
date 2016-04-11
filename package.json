@@ -4,8 +4,8 @@
   "description": "test urbanara",
   "main": "index.js",
   "scripts": {
-    "lint": "./node_modules/.bin/jscs src && ./node_modules/.bin/jshint src",
-    "fix": "./node_modules/.bin/jscs src --fix",
+    "lint": "./node_modules/.bin/jscs app && ./node_modules/.bin/jshint app",
+    "fix": "./node_modules/.bin/jscs app --fix",
     "precommit": "npm run lint",
     "prepush": "npm run lint"
   },
