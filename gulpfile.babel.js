@@ -55,3 +55,5 @@ gulp.task('styles', () => {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(build.styles));
 });
+
+gulp.task('default', ['scripts', 'markups', 'styles']);
