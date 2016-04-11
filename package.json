@@ -1,0 +1,22 @@
+{
+  "name": "want-to-be-urbanara",
+  "version": "1.0.0",
+  "description": "test urbanara",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letanure/want-to-be-urbanara.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "luiz tanure",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/letanure/want-to-be-urbanara/issues"
+  },
+  "homepage": "https://github.com/letanure/want-to-be-urbanara#readme"
+}
