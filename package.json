@@ -4,7 +4,10 @@
   "description": "test urbanara",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/jscs src && ./node_modules/.bin/jshint src",
+    "fix": "./node_modules/.bin/jscs src --fix",
+    "precommit": "npm run lint",
+    "prepush": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -36,8 +39,13 @@
     "gulp-stylus": "^2.3.1",
     "gulp-uglify": "^1.5.3",
     "jeet": "^6.1.2",
+    "jscs": "^2.11.0",
+    "jshint": "^2.9.1",
     "kouto-swiss": "^0.12.0",
     "rollup-plugin-babel": "^2.4.0",
     "rupture": "^0.6.1"
+  },
+  "devDependencies": {
+    "husky": "^0.11.4"
   }
 }
