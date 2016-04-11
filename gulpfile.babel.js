@@ -14,6 +14,7 @@ import jeet from 'jeet';
 import rupture from 'rupture';
 import gcmq from 'gulp-group-css-media-queries';
 import cssnano from 'gulp-cssnano';
+import browserSync from 'browser-sync';
 
 const source = {
   markups: 'app/markups/**/*.jade',
@@ -23,6 +24,7 @@ const source = {
 };
 
 const build = {
+  root: '.build/',
   markups: '.build/',
   scripts: '.build/scripts/',
   styles: '.build/styles/'
@@ -56,4 +58,19 @@ gulp.task('styles', () => {
     .pipe(gulp.dest(build.styles));
 });
 
-gulp.task('default', ['scripts', 'markups', 'styles']);
+gulp.task('watch', () => {
+    gulp.watch(source.markups, ['markups']);
+    gulp.watch(source.styles, ['styles']);
+    gulp.watch(source.scripts, ['scripts']);
+});
+
+gulp.task('server', () => {
+    var files = [ build.root ];
+    browserSync.init(files, {
+        server: {
+            baseDir: '.build/'
+        },
+    });
+});
+
+gulp.task('default', ['scripts', 'markups', 'styles', 'watch', 'server']);
