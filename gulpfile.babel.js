@@ -18,7 +18,7 @@ import browserSync from 'browser-sync';
 
 const source = {
   markups: 'app/markups/**/*.jade',
-  scripts: 'app/scripts/main.js',
+  scripts: 'app/scripts/**/*.js',
   styles: 'app/styles/**/*.styl',
   stylesMain: 'app/styles/**/*.styl'
 };
