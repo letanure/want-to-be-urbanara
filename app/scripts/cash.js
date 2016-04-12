@@ -42,5 +42,4 @@ export default function(withdraw_amount) {
     }
     return return_obj;
   }
-
 }

@@ -15,6 +15,7 @@ import rupture from 'rupture';
 import gcmq from 'gulp-group-css-media-queries';
 import cssnano from 'gulp-cssnano';
 import browserSync from 'browser-sync';
+import ghPages from 'gulp-gh-pages';
 
 const source = {
   markups: 'app/markups/**/*.jade',
@@ -24,6 +25,7 @@ const source = {
 };
 
 const build = {
+  files: '.build/**/*',
   root: '.build/',
   markups: '.build/',
   scripts: '.build/scripts/',
@@ -34,7 +36,7 @@ gulp.task('scripts', () => {
   gulp.src(source.scripts)
     .pipe(plumber())
     .pipe(rollup(rollupConfig))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest(build.scripts));
 });
 
@@ -59,18 +61,24 @@ gulp.task('styles', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch(source.markups, ['markups']);
-    gulp.watch(source.styles, ['styles']);
-    gulp.watch(source.scripts, ['scripts']);
+  gulp.watch(source.markups, ['markups']);
+  gulp.watch(source.styles, ['styles']);
+  gulp.watch(source.scripts, ['scripts']);
 });
 
 gulp.task('server', () => {
-    var files = [ build.root ];
-    browserSync.init(files, {
-        server: {
-            baseDir: '.build/'
-        },
-    });
+  var files = [ build.root ];
+  browserSync.init(files, {
+    server: {
+      baseDir: '.build/'
+    },
+  });
+});
+
+gulp.task('pages', () => {
+  gulp.src(build.files)
+    .pipe(ghPages());
 });
 
 gulp.task('default', ['scripts', 'markups', 'styles', 'watch', 'server']);
+gulp.task('deploy', ['scripts', 'markups', 'styles', 'pages']);
